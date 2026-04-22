@@ -43,11 +43,67 @@ tagline: >-
 # target: `_blank` opens in a new tab, `_self` opens in the same frame
 links:
   - link:
-      icon: "fa-brands fa-medium"
+      icon: "fa-solid fa-newspaper"
       text: "Subscribe to Splunk Partner Pulse"
       url: "https://discover.splunk.com/Partner-Newsletter-Subscription.html"
-      alt: "Subscribe"
+      alt: "Subscribe to Splunk Partner Pulse"
       title: "Subscribe to Splunk Partner Pulse"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-key"
+      text: "Request Splunk Enterprise Developer License"
+      url: "https://dev.splunk.com/enterprise/dev_license"
+      alt: "Request Splunk Enterprise Developer License"
+      title: "Request Splunk Enterprise Developer License"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-phone-volume"
+      text: "Splunk Partner Enablement Calls (.spec)"
+      url: "https://cisco.webex.com/webappng/sites/cisco/webinar/webinarSeries/register/1770d864b35d4cda95fbdc011e36c955"
+      alt: "Splunk Partner Enablement Calls (.spec)"
+      title: "Splunk Partner Enablement Calls (.spec)"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-video"
+      text: "Partner Enablement Webinars"
+      url: "https://cisco.webex.com/webappng/sites/cisco/webinar/webinarSeries/register/1eebea36fbb0496a9ba12c7d52c1b956"
+      alt: "Partner Enablement Webinars"
+      title: "Partner Enablement Webinars"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-users"
+      text: "ANZ User Group Chapters"
+      url: "https://usergroups.splunk.com/chapters"
+      alt: "ANZ User Group Chapters"
+      title: "ANZ User Group Chapters"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-graduation-cap"
+      text: "Workshop Wednesdays: Build Splunk Skills (APAC)"
+      url: "https://discover.splunk.com/workshop-wednesdays-apac.html"
+      alt: "Workshop Wednesdays: Build Splunk Skills (APAC)"
+      title: "Workshop Wednesdays: Build Splunk Skills (APAC)"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-blog"
+      text: "Splunk Community Blog: Latest Updates & Insights"
+      url: "https://community.splunk.com/t5/Community-Blog/bg-p/Community-Blog"
+      alt: "Splunk Community Blog: Latest Updates & Insights"
+      title: "Splunk Community Blog: Latest Updates & Insights"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-lightbulb"
+      text: "Splunk Lantern: Expert Insights for Success"
+      url: "https://lantern.splunk.com/"
+      alt: "Splunk Lantern: Expert Insights for Success"
+      title: "Splunk Lantern: Expert Insights for Success"
+      target: "_blank"
+  - link:
+      icon: "fa-brands fa-linkedin"
+      text: "Daniel Peluso - LinkedIn"
+      url: "https://www.linkedin.com/in/danielpeluso"
+      alt: "Daniel Peluso - LinkedIn"
+      title: "Daniel Peluso - LinkedIn"
       target: "_blank"
 
 
