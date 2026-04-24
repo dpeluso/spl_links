@@ -135,6 +135,7 @@ a {
   border: 1px solid var(--splunk-border);
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 
 .link-button::before {
@@ -146,6 +147,8 @@ a {
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
   transition: left 0.5s;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .link-button:hover::before {
@@ -166,6 +169,12 @@ a {
 .link-button i {
   font-size: 18px;
   color: var(--splunk-gold);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .footer {
@@ -209,7 +218,10 @@ a {
 .icon-button i {
   font-size: 20px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon-button::before {
@@ -220,6 +232,8 @@ a {
   background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .icon-button:hover {
