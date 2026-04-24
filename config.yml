@@ -1,7 +1,7 @@
 # Site Configuration
 
 # Theme, mapped to the directory: ./theme/xxxx
-theme: default
+theme: splunk
 
 # HTML Language setting
 lang: "en"

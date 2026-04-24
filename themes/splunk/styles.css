@@ -1,0 +1,331 @@
+/* Splunk Theme - Modern Dark Enterprise Design */
+
+/* CSS Variables */
+:root {
+  --splunk-dark: #0a1628;
+  --splunk-darker: #050a12;
+  --splunk-gold: #f39c12;
+  --splunk-gold-light: #f5a623;
+  --splunk-purple: #6b5b95;
+  --splunk-purple-light: #8b7ab8;
+  --splunk-cyan: #00d4ff;
+  --splunk-cyan-light: #1efaff;
+  --splunk-text: #e8eef7;
+  --splunk-text-muted: #a8b5c8;
+  --splunk-border: #1a2d4a;
+  --splunk-accent: #ff6b6b;
+  --splunk-success: #26d07c;
+}
+
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
+/* Main body */
+body {
+  background: linear-gradient(135deg, var(--splunk-dark) 0%, var(--splunk-darker) 100%);
+  color: var(--splunk-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  cursor: default;
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated background pattern */
+.background-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(0deg, transparent 24%, rgba(243, 156, 18, 0.05) 25%, rgba(243, 156, 18, 0.05) 26%, transparent 27%, transparent 74%, rgba(243, 156, 18, 0.05) 75%, rgba(243, 156, 18, 0.05) 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, rgba(243, 156, 18, 0.05) 25%, rgba(243, 156, 18, 0.05) 26%, transparent 27%, transparent 74%, rgba(243, 156, 18, 0.05) 75%, rgba(243, 156, 18, 0.05) 76%, transparent 77%, transparent);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.container {
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  z-index: 1;
+  border-radius: 16px;
+  padding: 40px;
+  background: rgba(10, 22, 40, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--splunk-border);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.profile {
+  margin-bottom: 30px;
+}
+
+.profile-pic {
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid var(--splunk-gold);
+  box-shadow: 0 0 30px rgba(243, 156, 18, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(243, 156, 18, 0.5);
+}
+
+.name {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 15px 0;
+  background: linear-gradient(135deg, var(--splunk-text) 0%, var(--splunk-gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.description {
+  font-size: 16px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+  color: var(--splunk-text-muted);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(243, 156, 18, 0.15) 0%, rgba(107, 91, 149, 0.15) 100%);
+  color: var(--splunk-text);
+  padding: 16px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--splunk-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.link-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.link-button:hover::before {
+  left: 100%;
+}
+
+.link-button:hover {
+  background: linear-gradient(135deg, rgba(243, 156, 18, 0.25) 0%, rgba(107, 91, 149, 0.25) 100%);
+  border-color: var(--splunk-gold);
+  box-shadow: 0 0 20px rgba(243, 156, 18, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.link-button:active {
+  transform: translateY(0);
+}
+
+.link-button i {
+  font-size: 18px;
+  color: var(--splunk-gold);
+}
+
+.footer {
+  margin-top: 40px;
+  font-size: 14px;
+  color: var(--splunk-text-muted);
+  border-top: 1px solid var(--splunk-border);
+  padding-top: 20px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.icon-button {
+  border: none;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(243, 156, 18, 0.1) 100%);
+  color: var(--splunk-cyan);
+  border-radius: 8px;
+  border: 1px solid var(--splunk-border);
+  position: relative;
+}
+
+.icon-button i {
+  font-size: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.icon-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.icon-button:hover {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(243, 156, 18, 0.15) 100%);
+  border-color: var(--splunk-cyan);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 212, 255, 0.2);
+  color: var(--splunk-cyan-light);
+}
+
+.icon-button:hover::before {
+  opacity: 1;
+}
+
+.icon-button:active {
+  transform: translateY(-1px);
+}
+
+.link-button-text {
+  font-size: 13px;
+  color: var(--splunk-text-muted);
+}
+
+.copyright {
+  margin-top: 12px;
+  font-size: 11px;
+  color: rgba(168, 181, 200, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+    padding: 30px 20px;
+    border-radius: 12px;
+  }
+
+  .name {
+    font-size: 28px;
+  }
+
+  .profile-pic {
+    width: 110px;
+    height: 110px;
+  }
+
+  .link-button {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+}
+
+/* Animation for subtle glowing effect */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(243, 156, 18, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(243, 156, 18, 0.4);
+  }
+}
+
+.profile-pic:hover {
+  animation: none;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .container {
+    background: white;
+    border: none;
+    box-shadow: none;
+  }
+
+  .background-pattern {
+    display: none;
+  }
+
+  .link-button {
+    border: 1px solid black;
+    background: white;
+    color: black;
+  }
+
+  .icon-button {
+    border: 1px solid black;
+    background: white;
+    color: black;
+  }
+}
