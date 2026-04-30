@@ -87,6 +87,25 @@
       gtag('config', '{{ google_analytics_id }}');
     </script>
   {% endif %}
+  {% if splunk_rum and splunk_rum.enabled and splunk_rum.realm and splunk_rum.rum_access_token and splunk_rum.application_name %}
+    <script src="{{ splunk_rum.script_url | default: 'https://cdn.signalfx.com/splunk-otel-web.js' }}" crossorigin="anonymous"></script>
+    <script>
+      (function() {
+        if (!window.SplunkRum || !window.SplunkRum.init) {
+          console.warn('Splunk RUM agent failed to load.');
+          return;
+        }
+
+        window.SplunkRum.init({
+          realm: '{{ splunk_rum.realm }}',
+          rumAccessToken: '{{ splunk_rum.rum_access_token }}',
+          applicationName: '{{ splunk_rum.application_name }}',
+          deploymentEnvironment: '{{ splunk_rum.deployment_environment | default: "production" }}',
+          spaMetrics: {% if splunk_rum.spa_metrics %}true{% else %}false{% endif %}
+        });
+      })();
+    </script>
+  {% endif %}
   <script src="./scripts.js"></script>
 </body>
 </html>

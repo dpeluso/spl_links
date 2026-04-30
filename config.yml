@@ -21,6 +21,18 @@ plugins:
 # Google Analytics tracking id
 google_analytics_id:
 
+# Splunk Real User Monitoring (RUM) for SPA monitoring
+# Docs: https://help.splunk.com/en/splunk-observability-cloud/monitor-end-user-experience/real-user-monitoring/monitor-single-page-applications
+# Note: RUM access tokens are public in browser code; use a dedicated RUM token.
+splunk_rum:
+    enabled: false
+    script_url: "https://cdn.signalfx.com/splunk-otel-web.js"
+    realm: "us0"
+    rum_access_token: "a5OVE71NXiRkCYxH34_Fbw"
+    application_name: "dpeluso-linkyee"
+    deployment_environment: "production"
+    spa_metrics: true
+
 # HTML Title
 title: "Daniel Peluso's Links"
 
@@ -43,12 +55,21 @@ tagline: >-
 # target: `_blank` opens in a new tab, `_self` opens in the same frame
 links:
   - link:
-      icon: "fa-solid fa-newspaper"
+      icon: "fa-brands fa-wpexplorer"
       text: "Splunk Partner Portal Tutorial"
       url: "https://cisco.navattic.com/splunk_partners?g=cm8y08u8q000e03kz6d0wc082&s=0"
       alt: "Splunk Partner Portal Resources"
       title: "Checkout FREE Splunk Partner Resources"
       target: "_blank"
+
+  - link:
+      icon: "fa-solid fa-play"
+      text: "Splunk Go On-Demand is now available! 🙌"
+      url: "https://www.brighttalk.com/series/8000"
+      alt: "Splunk Go On-Demand is now available! 🙌"
+      title: "Check out our recent SplunkGO sessoin"
+      target: "_blank"
+
   - link:
       icon: "fa-solid fa-newspaper"
       text: "Subscribe to Splunk Partner Pulse"
