@@ -36,7 +36,7 @@ splunk_rum:
 # Splunk Session Recorder for browser session replay
 # Docs: https://help.splunk.com/en/splunk-observability-cloud/monitor-end-user-experience/real-user-monitoring/replay-user-sessions/record-browser-sessions
 splunk_session_recorder:
-    enabled: false
+    enabled: true
     script_url: "https://cdn.observability.splunkcloud.com/o11y-gdi-rum/latest/splunk-otel-web-session-recorder.js"
     realm: "us0"
     rum_access_token: "a5OVE71NXiRkCYxH34_Fbw"
