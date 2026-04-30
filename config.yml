@@ -33,6 +33,18 @@ splunk_rum:
     deployment_environment: "production"
     spa_metrics: true
 
+# Splunk Session Recorder for browser session replay
+# Docs: https://help.splunk.com/en/splunk-observability-cloud/monitor-end-user-experience/real-user-monitoring/replay-user-sessions/record-browser-sessions
+splunk_session_recorder:
+    enabled: false
+    script_url: "https://cdn.observability.splunkcloud.com/o11y-gdi-rum/latest/splunk-otel-web-session-recorder.js"
+    realm: "us0"
+    rum_access_token: "a5OVE71NXiRkCYxH34_Fbw"
+    recorder_type: "splunk"
+    mask_all_inputs: true
+    mask_all_text: true
+    max_export_interval_ms: 5000
+
 # HTML Title
 title: "Daniel Peluso's Links"
 

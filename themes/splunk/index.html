@@ -108,7 +108,25 @@
         });
       })();
     </script>
-  {% endif %}
-  <script src="./scripts.js"></script>
+  {% endif %}  {% if splunk_session_recorder and splunk_session_recorder.enabled and splunk_session_recorder.realm and splunk_session_recorder.rum_access_token %}
+    <script src="{{ splunk_session_recorder.script_url | default: 'https://cdn.signalfx.com/splunk-otel-web-session-recorder.js' }}" crossorigin="anonymous"></script>
+    <script>
+      (function() {
+        if (!window.SplunkSessionRecorder || !window.SplunkSessionRecorder.init) {
+          console.warn('Splunk Session Recorder failed to load.');
+          return;
+        }
+
+        window.SplunkSessionRecorder.init({
+          realm: '{{ splunk_session_recorder.realm }}',
+          rumAccessToken: '{{ splunk_session_recorder.rum_access_token }}',
+          recorder: '{{ splunk_session_recorder.recorder_type | default: "splunk" }}',
+          maskAllInputs: {% if splunk_session_recorder.mask_all_inputs %}true{% else %}false{% endif %},
+          maskAllText: {% if splunk_session_recorder.mask_all_text %}true{% else %}false{% endif %},
+          maxExportIntervalMs: {{ splunk_session_recorder.max_export_interval_ms | default: 5000 }}
+        });
+      })();
+    </script>
+  {% endif %}  <script src="./scripts.js"></script>
 </body>
 </html>
