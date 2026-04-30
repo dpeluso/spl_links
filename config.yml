@@ -44,6 +44,13 @@ tagline: >-
 links:
   - link:
       icon: "fa-solid fa-newspaper"
+      text: "Splunk Partner Portal Tutorial"
+      url: "https://cisco.navattic.com/splunk_partners?g=cm8y08u8q000e03kz6d0wc082&s=0"
+      alt: "Splunk Partner Portal Resources"
+      title: "Checkout FREE Splunk Partner Resources"
+      target: "_blank"
+  - link:
+      icon: "fa-solid fa-newspaper"
       text: "Subscribe to Splunk Partner Pulse"
       url: "https://discover.splunk.com/Partner-Newsletter-Subscription.html"
       alt: "Subscribe to Splunk Partner Pulse"
