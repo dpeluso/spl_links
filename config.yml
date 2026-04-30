@@ -26,7 +26,7 @@ google_analytics_id:
 # Note: RUM access tokens are public in browser code; use a dedicated RUM token.
 splunk_rum:
     enabled: true
-    script_url: "https://cdn.signalfx.com/splunk-otel-web.js"
+    script_url: "https://cdn.observability.splunkcloud.com/o11y-gdi-rum/latest/splunk-otel-web.js"
     realm: "us0"
     rum_access_token: "a5OVE71NXiRkCYxH34_Fbw"
     application_name: "dpeluso-linkyee"
@@ -67,9 +67,15 @@ links:
       text: "Splunk Go On-Demand is now available! 🙌"
       url: "https://www.brighttalk.com/series/8000"
       alt: "Splunk Go On-Demand is now available! 🙌"
-      title: "Check out our recent SplunkGO sessoin"
+      title: "Check out our recent SplunkGO sessions"
       target: "_blank"
-
+  - link:
+      icon: "fa-solid fa-play"
+      text: "Splunk Games"
+      url: "https://splunkgames.com/"
+      alt: "Splunk Games"
+      title: "Splunk Games"
+      target: "_blank"
   - link:
       icon: "fa-solid fa-newspaper"
       text: "Subscribe to Splunk Partner Pulse"

@@ -91,7 +91,7 @@
     </script>
   {% endif %}
   {% if splunk_rum and splunk_rum.enabled and splunk_rum.realm and splunk_rum.rum_access_token and splunk_rum.application_name %}
-    <script src="{{ splunk_rum.script_url | default: 'https://cdn.signalfx.com/splunk-otel-web.js' }}" crossorigin="anonymous"></script>
+    <script src="{{ splunk_rum.script_url | default: 'https://cdn.observability.splunkcloud.com/o11y-gdi-rum/latest/splunk-otel-web.js' }}" crossorigin="anonymous"></script>
     <script>
       (function() {
         if (!window.SplunkRum || !window.SplunkRum.init) {
