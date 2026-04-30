@@ -37,8 +37,8 @@ body {
   text-align: center;
   padding: 20px 0;
   position: relative;
-  overflow: hidden;
   overflow-x: hidden;
+  overflow-y: auto;
   margin: 0;
   padding: 0;
 }
