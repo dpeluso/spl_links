@@ -25,7 +25,7 @@ google_analytics_id:
 # Docs: https://help.splunk.com/en/splunk-observability-cloud/monitor-end-user-experience/real-user-monitoring/monitor-single-page-applications
 # Note: RUM access tokens are public in browser code; use a dedicated RUM token.
 splunk_rum:
-    enabled: false
+    enabled: true
     script_url: "https://cdn.signalfx.com/splunk-otel-web.js"
     realm: "us0"
     rum_access_token: "a5OVE71NXiRkCYxH34_Fbw"
