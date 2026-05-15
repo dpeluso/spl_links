@@ -1,0 +1,1259 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ANZ Partner Training API (Read-Only)",
+    "description": "Airtable API definition for read-only operations into ANZ Partner Training",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "https://api.airtable.com/v0",
+      "description": "API URL"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "PartnerTrainingPlan": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "PreReq Accred/Certification": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "Assignee": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string",
+                "format": "email"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "email"
+            ]
+          },
+          "Status": {
+            "type": "string",
+            "enum": [
+              "Todo",
+              "In progress",
+              "Done"
+            ]
+          },
+          "Attachments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "Partner": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of record IDs linking to the 'Country View' table.",
+            "x-linkedTable": "CountryView"
+          },
+          "Partner (from Partner)": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "CertAccred": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of record IDs linking to the 'Pivot_certsaccreds' table.",
+            "x-linkedTable": "Pivotcertsaccreds"
+          },
+          "Name (from CertAccred)": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ListPartnerTrainingPlanResponse": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "createdTime": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "fields": {
+                  "$ref": "#/components/schemas/PartnerTrainingPlan"
+                }
+              }
+            }
+          },
+          "offset": {
+            "type": "string"
+          }
+        }
+      },
+      "AccredDeeplinks": {
+        "type": "object",
+        "properties": {
+          "LP Object": {
+            "type": "string"
+          },
+          "PLC Link": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string",
+            "enum": [
+              "Credential",
+              "Credential - Accreditation",
+              "Credential - Technical Badge",
+              "Foundations Series",
+              "General Enablement",
+              "Partnerverse",
+              "Program-Related",
+              "Workshop"
+            ]
+          }
+        }
+      },
+      "ListAccredDeeplinksResponse": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "createdTime": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "fields": {
+                  "$ref": "#/components/schemas/AccredDeeplinks"
+                }
+              }
+            }
+          },
+          "offset": {
+            "type": "string"
+          }
+        }
+      },
+      "Pivotcertsaccreds": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          },
+          "NextStep": {
+            "type": "string",
+            "enum": [
+              "Splunk Core Certified Power User",
+              "Splunk Enterprise Certified Admin",
+              "Splunk Certified Developer",
+              "Splunk Enterprise Certified Architect",
+              "Splunk Core Certified Consultant",
+              "n/a - end of pathway",
+              "Splunk O11y Cloud Certified Metrics User",
+              "Splunk SOAR Certified Automation Developer",
+              "Splunk Enterprise Security Certified Admin",
+              "Splunk Accredited Sales Engineer II ",
+              "Splunk Accredited Sales Engineer II",
+              "n/a",
+              "Splunk Accredited SIEM Replacement",
+              "Splunk Observability Consultant II (Partner)",
+              "Splunk Accredited Sales Rep II"
+            ]
+          },
+          "NextStep 2": {
+            "type": "string"
+          },
+          "NextStep 3": {
+            "type": "string"
+          },
+          "PreReq": {
+            "type": "string",
+            "enum": [
+              "Splunk Core Certified Power User",
+              "Splunk Cloud Certified Admin",
+              "Splunk Accredited Observability Consultant I (Partner)",
+              "n/a",
+              "Splunk Accredited Technical Selling Foundations (Partner)",
+              "Splunk Accredited Sales Rep I",
+              "Splunk Core Certified Consultant"
+            ]
+          },
+          "PreReq 2": {
+            "type": "string",
+            "enum": [
+              "Splunk Enterprise Certified Admin",
+              "Splunk Technical Selling Foundations"
+            ]
+          },
+          "PreReq 3": {
+            "type": "string",
+            "enum": [
+              "Splunk Core Certified Advanced Power User",
+              "Splunk Accredited Platform SE I"
+            ]
+          },
+          "PreReq 4": {
+            "type": "string",
+            "enum": [
+              "Splunk Enterprise Certified Architect"
+            ]
+          },
+          "PreReq 5": {
+            "type": "string",
+            "enum": [
+              "Splunk Core Certified Consultant"
+            ]
+          },
+          "PreReq 6": {
+            "type": "string",
+            "enum": [
+              "Splunk Accredited ES Implementation"
+            ]
+          },
+          "Enablement": {
+            "type": "string"
+          },
+          "EnablementExamLink": {
+            "type": "string"
+          },
+          "EnablementCourseLink": {
+            "type": "string"
+          },
+          "CEUValue": {
+            "type": "number"
+          },
+          "PartnerExamPrice": {
+            "type": "number"
+          },
+          "PartnerCoursePrice": {
+            "type": "number"
+          },
+          "EnablementDurationHrs": {
+            "type": "number"
+          },
+          "Benefits": {
+            "type": "string"
+          },
+          "RoleMapping": {
+            "type": "string"
+          },
+          "PartnerType": {
+            "type": "string",
+            "enum": [
+              "PSPP",
+              "ChannelPartner"
+            ]
+          },
+          "PartnerType 2": {
+            "type": "string"
+          },
+          "Type": {
+            "type": "string",
+            "enum": [
+              "Solutions",
+              "Services Capability",
+              "Industry"
+            ]
+          },
+          "PartnerTrainingPlan": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of record IDs linking to the 'PartnerTrainingPlan' table.",
+            "x-linkedTable": "PartnerTrainingPlan"
+          }
+        }
+      },
+      "ListPivotcertsaccredsResponse": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "createdTime": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "fields": {
+                  "$ref": "#/components/schemas/Pivotcertsaccreds"
+                }
+              }
+            }
+          },
+          "offset": {
+            "type": "string"
+          }
+        }
+      },
+      "Workshops": {
+        "type": "object",
+        "properties": {
+          "Asset Name": {
+            "type": "string"
+          },
+          "Product Area": {
+            "type": "string",
+            "enum": [
+              "Security",
+              "Platform",
+              "Observability"
+            ]
+          },
+          "Description": {
+            "type": "string"
+          },
+          "Time Required": {
+            "type": "string",
+            "enum": [
+              "3-4 hours",
+              "3 hours",
+              "2-3 hours",
+              "4 hours",
+              "16-20 hours",
+              "6 hours",
+              "1 hour",
+              "90-120 mins",
+              "8-12 hours",
+              "2 hours",
+              "TBD",
+              "60-90 mins",
+              "60 mins",
+              "2.5 hours",
+              "1.5 hours",
+              "N/A",
+              "90 mins",
+              "1 day",
+              "1-4 days",
+              "60-75 mins",
+              "1.5-2 hours",
+              "45 mins",
+              "1-1.5 hours",
+              "2.5-3 hours"
+            ]
+          },
+          "Building An Essential Security Foundation": {
+            "type": "boolean"
+          },
+          "Advancing Security Analytics and Investigations": {
+            "type": "boolean"
+          },
+          "Unified Security Operations": {
+            "type": "boolean"
+          },
+          "Security Teams Advancing Detection/Inventory Capabilities": {
+            "type": "string"
+          },
+          "Security Teams Advancing Automation/Response Capabilities & Security Architectures": {
+            "type": "boolean"
+          },
+          "Accelerate IT Troubleshooting": {
+            "type": "boolean"
+          },
+          "Prioritize & Resolve Service Incidents": {
+            "type": "boolean"
+          },
+          "Empower Engineers with Unified Observability": {
+            "type": "boolean"
+          },
+          "Troubleshoot digital customer experiences": {
+            "type": "boolean"
+          },
+          "On-Call to Incident Intelligence Upgrade": {
+            "type": "string"
+          },
+          "Data Lake Integration": {
+            "type": "string"
+          },
+          "Edge Hub": {
+            "type": "string"
+          },
+          "[No Specific Sales Motion]": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ListWorkshopsResponse": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "createdTime": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "fields": {
+                  "$ref": "#/components/schemas/Workshops"
+                }
+              }
+            }
+          },
+          "offset": {
+            "type": "string"
+          }
+        }
+      },
+      "specwebinarsall": {
+        "type": "object",
+        "properties": {
+          "Primary": {
+            "type": "string"
+          },
+          "Presenter": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "enum": [
+              "Yogesh Sontakke",
+              "David Gamer",
+              "Alan Ivarson",
+              "Jim Donn",
+              "Lei Chen",
+              "AK Khamis",
+              "Jodee Varney",
+              "Aditya Tammana",
+              "Darren Dance",
+              "Matthew Modestino",
+              "Philipp Drieger",
+              "Adrian Procek",
+              "Alex Pilger",
+              "James Young",
+              "Ryan Cramer",
+              "Antoni Komorowski",
+              "Poornima Devaraj",
+              "Tony Vincent",
+              "Jason Conger",
+              "Atef Kouki",
+              "Robin Barre",
+              "Laura Blystone",
+              "Ian Torbett",
+              "Subu Baskaran",
+              "Lizzy Li",
+              "Kelby Shelton",
+              "Marquis Montgomery",
+              "Mike Cohen",
+              "Sunder Parameswaran",
+              "Derek Feriancek",
+              "Andre Pietsch"
+            ]
+          },
+          "Webinar Date": {
+            "type": "string",
+            "format": "date"
+          },
+          "Completed / Planned": {
+            "type": "string",
+            "enum": [
+              "planned",
+              "completed"
+            ]
+          },
+          "Live sessions planned/held": {
+            "type": "number"
+          },
+          "Live Sessions x Theater": {
+            "type": "string"
+          }
+        }
+      },
+      "ListspecwebinarsallResponse": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "createdTime": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "fields": {
+                  "$ref": "#/components/schemas/specwebinarsall"
+                }
+              }
+            }
+          },
+          "offset": {
+            "type": "string"
+          }
+        }
+      },
+      "CountryView": {
+        "type": "object",
+        "properties": {
+          "Billing Country": {
+            "type": "string"
+          },
+          "CasesSafeAccID": {
+            "type": "string"
+          },
+          "Managed Type": {
+            "type": "string",
+            "enum": [
+              "Splunk Managed",
+              "Disti Managed"
+            ]
+          },
+          "Partner": {
+            "type": "string"
+          },
+          "Report Source": {
+            "type": "string",
+            "enum": [
+              "BKPIP",
+              "BKPIP+TAP",
+              "TAP"
+            ]
+          },
+          "Reseller Tier": {
+            "type": "string",
+            "enum": [
+              "Elite",
+              "Associate",
+              "Premier",
+              "",
+              "Enrolled",
+              "Authorized"
+            ]
+          },
+          "Sales Theater": {
+            "type": "string",
+            "enum": [
+              "Americas",
+              "EMEA",
+              "APJC",
+              "GSP",
+              "(blank)"
+            ]
+          },
+          "Type of Partner": {
+            "type": "string",
+            "enum": [
+              "Reseller;Technology Alliance",
+              "Reseller",
+              "Reseller;Professional Services",
+              "Reseller;MSP;Professional Services",
+              "Reseller;Systems Integrator;Technology Alliance",
+              "Reseller;MSP",
+              "Reseller;MSP;Technology Alliance",
+              "Reseller;MSP;Systems Integrator",
+              "Reseller;MSP;Professional Services;Technology Alliance",
+              "",
+              "MSP",
+              "Reseller;Professional Services;Technology Alliance",
+              "Reseller;MSP;Professional Services;Systems Integrator",
+              "MSP;Technology Alliance",
+              "MSP;Professional Services;Systems Integrator",
+              "MSP;Professional Services",
+              "MSP;OEM",
+              "Technology Alliance",
+              "Distribution",
+              "OEM;Technology Alliance",
+              "MSP;Professional Services;Technology Alliance",
+              "Reseller;Distribution;Professional Services",
+              "Reseller;MSP;OEM;Technology Alliance"
+            ]
+          },
+          "No": {
+            "type": "number"
+          },
+          "Bookings (SW in ACV)": {
+            "type": "number",
+            "format": "currency"
+          },
+          "Pipeline (SW in ACV)": {
+            "type": "number",
+            "format": "currency"
+          },
+          "PartnerTrainingPlan": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of record IDs linking to the 'PartnerTrainingPlan' table.",
+            "x-linkedTable": "PartnerTrainingPlan"
+          }
+        }
+      },
+      "ListCountryViewResponse": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "createdTime": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "fields": {
+                  "$ref": "#/components/schemas/CountryView"
+                }
+              }
+            }
+          },
+          "offset": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/app6Mu6HAeCdVIsWs/PartnerTrainingPlan": {
+      "get": {
+        "operationId": "listPartnerTrainingPlan",
+        "tags": [
+          "PartnerTrainingPlan"
+        ],
+        "summary": "List records in PartnerTrainingPlan",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "fields",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "description": "Array of field names to be returned in the records. If not specified, all fields are returned."
+          },
+          {
+            "in": "query",
+            "name": "filterByFormula",
+            "schema": {
+              "type": "string"
+            },
+            "description": "A formula used to filter records."
+          },
+          {
+            "in": "query",
+            "name": "maxRecords",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The maximum total number of records that will be returned in your requests."
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The number of records returned in each request. Must be less than or equal to 100."
+          },
+          {
+            "in": "query",
+            "name": "sort[0][field]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The field name to sort on."
+          },
+          {
+            "in": "query",
+            "name": "sort[0][direction]",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            },
+            "description": "The sort direction: 'asc' or 'desc'."
+          },
+          {
+            "in": "query",
+            "name": "view",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The name or ID of a view in the table."
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The pagination offset."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListPartnerTrainingPlanResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app6Mu6HAeCdVIsWs/AccredDeeplinks": {
+      "get": {
+        "operationId": "listAccredDeeplinks",
+        "tags": [
+          "AccredDeeplinks"
+        ],
+        "summary": "List records in AccredDeeplinks",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "fields",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "description": "Array of field names to be returned in the records. If not specified, all fields are returned."
+          },
+          {
+            "in": "query",
+            "name": "filterByFormula",
+            "schema": {
+              "type": "string"
+            },
+            "description": "A formula used to filter records."
+          },
+          {
+            "in": "query",
+            "name": "maxRecords",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The maximum total number of records that will be returned in your requests."
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The number of records returned in each request. Must be less than or equal to 100."
+          },
+          {
+            "in": "query",
+            "name": "sort[0][field]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The field name to sort on."
+          },
+          {
+            "in": "query",
+            "name": "sort[0][direction]",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            },
+            "description": "The sort direction: 'asc' or 'desc'."
+          },
+          {
+            "in": "query",
+            "name": "view",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The name or ID of a view in the table."
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The pagination offset."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListAccredDeeplinksResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app6Mu6HAeCdVIsWs/Pivot_certsaccreds": {
+      "get": {
+        "operationId": "listPivotcertsaccreds",
+        "tags": [
+          "Pivot_certsaccreds"
+        ],
+        "summary": "List records in Pivot_certsaccreds",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "fields",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "description": "Array of field names to be returned in the records. If not specified, all fields are returned."
+          },
+          {
+            "in": "query",
+            "name": "filterByFormula",
+            "schema": {
+              "type": "string"
+            },
+            "description": "A formula used to filter records."
+          },
+          {
+            "in": "query",
+            "name": "maxRecords",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The maximum total number of records that will be returned in your requests."
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The number of records returned in each request. Must be less than or equal to 100."
+          },
+          {
+            "in": "query",
+            "name": "sort[0][field]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The field name to sort on."
+          },
+          {
+            "in": "query",
+            "name": "sort[0][direction]",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            },
+            "description": "The sort direction: 'asc' or 'desc'."
+          },
+          {
+            "in": "query",
+            "name": "view",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The name or ID of a view in the table."
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The pagination offset."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListPivotcertsaccredsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app6Mu6HAeCdVIsWs/Workshops": {
+      "get": {
+        "operationId": "listWorkshops",
+        "tags": [
+          "Workshops"
+        ],
+        "summary": "List records in Workshops",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "fields",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "description": "Array of field names to be returned in the records. If not specified, all fields are returned."
+          },
+          {
+            "in": "query",
+            "name": "filterByFormula",
+            "schema": {
+              "type": "string"
+            },
+            "description": "A formula used to filter records."
+          },
+          {
+            "in": "query",
+            "name": "maxRecords",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The maximum total number of records that will be returned in your requests."
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The number of records returned in each request. Must be less than or equal to 100."
+          },
+          {
+            "in": "query",
+            "name": "sort[0][field]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The field name to sort on."
+          },
+          {
+            "in": "query",
+            "name": "sort[0][direction]",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            },
+            "description": "The sort direction: 'asc' or 'desc'."
+          },
+          {
+            "in": "query",
+            "name": "view",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The name or ID of a view in the table."
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The pagination offset."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListWorkshopsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app6Mu6HAeCdVIsWs/.spec%20webinars%20-%20all": {
+      "get": {
+        "operationId": "listspecwebinarsall",
+        "tags": [
+          ".spec webinars - all"
+        ],
+        "summary": "List records in .spec webinars - all",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "fields",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "description": "Array of field names to be returned in the records. If not specified, all fields are returned."
+          },
+          {
+            "in": "query",
+            "name": "filterByFormula",
+            "schema": {
+              "type": "string"
+            },
+            "description": "A formula used to filter records."
+          },
+          {
+            "in": "query",
+            "name": "maxRecords",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The maximum total number of records that will be returned in your requests."
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The number of records returned in each request. Must be less than or equal to 100."
+          },
+          {
+            "in": "query",
+            "name": "sort[0][field]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The field name to sort on."
+          },
+          {
+            "in": "query",
+            "name": "sort[0][direction]",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            },
+            "description": "The sort direction: 'asc' or 'desc'."
+          },
+          {
+            "in": "query",
+            "name": "view",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The name or ID of a view in the table."
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The pagination offset."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListspecwebinarsallResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/app6Mu6HAeCdVIsWs/Country%20View": {
+      "get": {
+        "operationId": "listCountryView",
+        "tags": [
+          "Country View"
+        ],
+        "summary": "List records in Country View",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "fields",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": true,
+            "description": "Array of field names to be returned in the records. If not specified, all fields are returned."
+          },
+          {
+            "in": "query",
+            "name": "filterByFormula",
+            "schema": {
+              "type": "string"
+            },
+            "description": "A formula used to filter records."
+          },
+          {
+            "in": "query",
+            "name": "maxRecords",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The maximum total number of records that will be returned in your requests."
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The number of records returned in each request. Must be less than or equal to 100."
+          },
+          {
+            "in": "query",
+            "name": "sort[0][field]",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The field name to sort on."
+          },
+          {
+            "in": "query",
+            "name": "sort[0][direction]",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ]
+            },
+            "description": "The sort direction: 'asc' or 'desc'."
+          },
+          {
+            "in": "query",
+            "name": "view",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The name or ID of a view in the table."
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "string"
+            },
+            "description": "The pagination offset."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListCountryViewResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
